@@ -31,12 +31,24 @@ public class CarServiceImpl implements CarService, CarServiceListMethods{
     @Override
     public Car update(Car updatedCar, Long id) {
         Car car = findById(id);
-        car.setBrand(updatedCar.getBrand());
-        car.setModel(updatedCar.getModel());
-        car.setPrice(updatedCar.getPrice());
-        car.setFuel(updatedCar.getFuel());
-        car.setHorsepower(updatedCar.getHorsepower());
-        car.setYear(updatedCar.getYear());
+        if(updatedCar.getBrand() != null){
+            car.setBrand(updatedCar.getBrand());
+        }
+        if(updatedCar.getModel() != null) {
+            car.setModel(updatedCar.getModel());
+        }
+        if(updatedCar.getPrice() != null) {
+            car.setPrice(updatedCar.getPrice());
+        }
+        if(updatedCar.getFuel() != null) {
+            car.setFuel(updatedCar.getFuel());
+        }
+        if(updatedCar.getHorsepower() != null) {
+            car.setHorsepower(updatedCar.getHorsepower());
+        }
+        if(updatedCar.getYear() != null) {
+            car.setYear(updatedCar.getYear());
+        }
         return car;
     }
 
