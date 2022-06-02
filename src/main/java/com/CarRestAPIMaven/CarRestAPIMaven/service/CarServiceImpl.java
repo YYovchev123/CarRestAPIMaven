@@ -54,16 +54,28 @@ public class CarServiceImpl implements CarService, CarServiceListMethods{
 
     @Override
     public void deleteById(Long id) {
+        boolean exists = carRepository.existsById(id);
+        if(!exists) {
+            throw new RecordNotFoundException(String.format("Кола с ID: %s не е намерена!", id));
+        }
         carRepository.deleteById(id);
     }
 
     @Override
     public void deleteByBrand(String brand) {
+        boolean exists = carRepository.existsByBrand(brand);
+        if(!exists) {
+            throw new RecordNotFoundException(String.format("Коли с марка %s не са намерени!", brand));
+        }
         carRepository.deleteByBrand(brand);
     }
 
     @Override
     public void deleteByModel(String model) {
+        boolean exists = carRepository.existsByModel(model);
+        if(!exists) {
+            throw new RecordNotFoundException(String.format("Коли с модел %s не са намерени!", model));
+        }
         carRepository.deleteByModel(model);
     }
 
